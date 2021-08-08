@@ -7,18 +7,20 @@ const scene = new THREE.Scene();
 // CAMERA
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 // INIT CAMERA
-camera.position.z = 60;
+camera.position.z = 45;
 camera.position.x = 3;
 camera.position.y = 20;
-camera.lookAt(0, 0, -50)
 
 // RENDERER
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true
 
 // CONTROLS
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.target = new THREE.Vector3(0, 0, -40);
+controls.update();
 
 // RESIZE HAMDLER
 export function onWindowResize() {
