@@ -7,10 +7,10 @@ const scene = new THREE.Scene();
 // CAMERA
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 // INIT CAMERA
-camera.position.z = 25;
+camera.position.z = 60;
 camera.position.x = 3;
-camera.position.y = 6;
-camera.lookAt(0, 0, -20)
+camera.position.y = 20;
+camera.lookAt(0, 0, -50)
 
 // RENDERER
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -86,9 +86,11 @@ light2.shadow.mapSize.height = 4096;
 scene.add( light2 );
 
 // TEXT
+var textMesh1: THREE.Mesh;
+
 const loader = new THREE.FontLoader();
-loader.load('./fonts/Ming_Imperial_Love.json', function (font) {
-    const geometry = new THREE.TextGeometry('hello', {
+loader.load('./fonts/optimer_bold.typeface.json', function (font) {
+    const geometry = new THREE.TextGeometry('three.js', {
         font: font,
         size: 5,
         height: 1,
@@ -103,9 +105,11 @@ loader.load('./fonts/Ming_Imperial_Love.json', function (font) {
         new THREE.MeshPhongMaterial({ color: 0xff6600}), // front
         new THREE.MeshPhongMaterial({ color: 0x0000ff }) // side
     ];
-    const textMesh1 = new THREE.Mesh(geometry, materials);
+    textMesh1 = new THREE.Mesh(geometry, materials);
     textMesh1.castShadow = true
-    textMesh1.position.y += 2
+    textMesh1.position.y += 10
+    textMesh1.position.x -= 6
+    textMesh1.rotation.y = 0.25    
     scene.add(textMesh1)
 });
 
@@ -113,11 +117,11 @@ loader.load('./fonts/Ming_Imperial_Love.json', function (font) {
 // ANIMATE
 function animate() {
     const now = Date.now() / 1000;
-    light1.position.y = 10;
+    light1.position.y = 15;
     light1.position.x = Math.cos(now) * 20;
     light1.position.z = Math.sin(now) * 20;
 
-    light2.position.y = 10;
+    light2.position.y = 15;
     light2.position.x = Math.sin(now) * 20;
     light2.position.z = Math.cos(now) * 20;
 
