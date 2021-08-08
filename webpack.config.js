@@ -1,6 +1,6 @@
 const path = require('path');
 
-const src = path.resolve(__dirname, 'dist');
+const src = path.resolve(__dirname, 'src');
 
 module.exports = {
   mode: 'development',

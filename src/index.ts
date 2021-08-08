@@ -90,7 +90,7 @@ scene.add(directionalLight);
 
 // TEXT
 const loader = new THREE.FontLoader();
-loader.load('./fonts/Ming_Imperial_Love.json', function (font) { // './fonts/droid/droid_sans_bold.typeface.json'
+loader.load('./fonts/Ming_Imperial_Love.json', function (font) {
     const geometry = new THREE.TextGeometry('hello', {
         font: font,
         size: 5,
