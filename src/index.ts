@@ -64,14 +64,6 @@ for (var i = -50; i <= 50; i += 5) {
 
 // scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
 
-// SPOT LIGHT
-// const spotLight = new THREE.SpotLight( 0xffffff );
-// spotLight.position.set( 20, 15, 20 );
-// spotLight.castShadow = true;
-// spotLight.shadow.mapSize.width = 4096;
-// spotLight.shadow.mapSize.height = 4096;
-// scene.add(spotLight)
-
 // POINT LIGHT
 const light1 = new THREE.PointLight( 0xff6666, 1, 100 );
 light1.castShadow = true;
@@ -136,6 +128,38 @@ loader.load('./fonts/Teko_Medium_Regular.json', function (font) {
     textMesh2.rotation.y = -0.25    
     scene.add(textMesh2)
 });
+
+loader.load( 'fonts/Teko_Medium_Regular.json', function ( font ) {
+
+    const color = 0xffb8fb;
+
+    const matLite = new THREE.MeshBasicMaterial( {
+        color: color,
+        transparent: true,
+        opacity: 0.4,
+        side: THREE.DoubleSide
+    } );
+
+    const message = "(´°_°`)";
+
+    const shapes = font.generateShapes( message, 20 );
+
+    const geometry = new THREE.ShapeGeometry( shapes );
+
+    geometry.computeBoundingBox();
+
+    const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+    geometry.translate( xMid, 0, 0 );
+
+    // make shape ( N.B. edge view not visible )
+
+    const text = new THREE.Mesh( geometry, matLite );
+    text.position.z = -40
+    text.position.y = 5
+    scene.add( text );
+
+} ); //end load function
 
 // ANIMATE
 function animate() {
