@@ -8,3 +8,7 @@ threejs-text-example
 Convert a font to typeface.js font.
 
 http://gero3.github.io/facetype.js/
+
+# fonts for download
+
+https://fonts.google.com/

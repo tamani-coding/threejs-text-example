@@ -86,9 +86,9 @@ light2.shadow.mapSize.height = 4096;
 scene.add( light2 );
 
 // TEXT
-var textMesh1: THREE.Mesh;
 
 const loader = new THREE.FontLoader();
+
 loader.load('./fonts/optimer_bold.typeface.json', function (font) {
     const geometry = new THREE.TextGeometry('three.js', {
         font: font,
@@ -105,7 +105,7 @@ loader.load('./fonts/optimer_bold.typeface.json', function (font) {
         new THREE.MeshPhongMaterial({ color: 0xff6600}), // front
         new THREE.MeshPhongMaterial({ color: 0x0000ff }) // side
     ];
-    textMesh1 = new THREE.Mesh(geometry, materials);
+    const textMesh1 = new THREE.Mesh(geometry, materials);
     textMesh1.castShadow = true
     textMesh1.position.y += 10
     textMesh1.position.x -= 6
@@ -113,6 +113,29 @@ loader.load('./fonts/optimer_bold.typeface.json', function (font) {
     scene.add(textMesh1)
 });
 
+loader.load('./fonts/Teko_Medium_Regular.json', function (font) {
+    const geometry = new THREE.TextGeometry('3D TEXT', {
+        font: font,
+        size: 5,
+        height: 2,
+        curveSegments: 10,
+        bevelEnabled: false,
+        bevelOffset: 0,
+        bevelSegments: 1,
+        bevelSize: 0.3,
+        bevelThickness:1
+    });
+    const materials = [
+        new THREE.MeshPhongMaterial({ color: 0xa8325c}), // front
+        new THREE.MeshPhongMaterial({ color: 0x540722}) // side
+    ];
+    const textMesh2 = new THREE.Mesh(geometry, materials);
+    textMesh2.castShadow = true
+    textMesh2.position.y += 5
+    textMesh2.position.x -= 6
+    textMesh2.rotation.y = -0.25    
+    scene.add(textMesh2)
+});
 
 // ANIMATE
 function animate() {
