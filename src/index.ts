@@ -6,6 +6,11 @@ const scene = new THREE.Scene();
 
 // CAMERA
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+// INIT CAMERA
+camera.position.z = 25;
+camera.position.x = 3;
+camera.position.y = 6;
+camera.lookAt(0, 0, -20)
 
 // RENDERER
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -22,12 +27,6 @@ export function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 window.addEventListener('resize', onWindowResize);
-
-// INIT CAMERA
-camera.position.z = 25;
-camera.position.x = 3;
-camera.position.y = 6;
-camera.lookAt(0, 0, -20)
 
 // INIT HEMISPHERE LIGHT
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
@@ -49,19 +48,19 @@ for (var i = -50; i <= 50; i += 5) {
 
 
 // DIRECTIONAL LIGHT
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.x += 20
-directionalLight.position.y += 20
-directionalLight.position.z += 20
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.width = 4096;
-directionalLight.shadow.mapSize.height = 4096;
-const d = 25;
-directionalLight.shadow.camera.left = - d;
-directionalLight.shadow.camera.right = d;
-directionalLight.shadow.camera.top = d;
-directionalLight.shadow.camera.bottom = - d;
-scene.add(directionalLight);
+// const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+// directionalLight.position.x += 20
+// directionalLight.position.y += 20
+// directionalLight.position.z += 20
+// directionalLight.castShadow = true
+// directionalLight.shadow.mapSize.width = 4096;
+// directionalLight.shadow.mapSize.height = 4096;
+// const d = 25;
+// directionalLight.shadow.camera.left = - d;
+// directionalLight.shadow.camera.right = d;
+// directionalLight.shadow.camera.top = d;
+// directionalLight.shadow.camera.bottom = - d;
+// scene.add(directionalLight);
 
 // scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
 
@@ -74,19 +73,17 @@ scene.add(directionalLight);
 // scene.add(spotLight)
 
 // POINT LIGHT
-// const light1 = new THREE.PointLight( 0xff0000, 1, 100 );
-// light1.position.set( 20, 20, 20 );
-// light1.castShadow = true;
-// light1.shadow.mapSize.width = 4096;
-// light1.shadow.mapSize.height = 4096;
-// scene.add( light1 );
+const light1 = new THREE.PointLight( 0xff6666, 1, 100 );
+light1.castShadow = true;
+light1.shadow.mapSize.width = 4096;
+light1.shadow.mapSize.height = 4096;
+scene.add( light1 );
 
-// const light2 = new THREE.PointLight( 0x00ff00, 1, 100 );
-// light2.position.set( 20, 20, 20 );
-// light2.castShadow = true;
-// light2.shadow.mapSize.width = 4096;
-// light2.shadow.mapSize.height = 4096;
-// scene.add( light2 );
+const light2 = new THREE.PointLight( 0x33ff33, 1, 100 );
+light2.castShadow = true;
+light2.shadow.mapSize.width = 4096;
+light2.shadow.mapSize.height = 4096;
+scene.add( light2 );
 
 // TEXT
 const loader = new THREE.FontLoader();
@@ -109,13 +106,21 @@ loader.load('./fonts/Ming_Imperial_Love.json', function (font) {
     const textMesh1 = new THREE.Mesh(geometry, materials);
     textMesh1.castShadow = true
     textMesh1.position.y += 2
-    textMesh1.position.x -= 3
     scene.add(textMesh1)
 });
 
 
 // ANIMATE
 function animate() {
+    const now = Date.now() / 1000;
+    light1.position.y = 10;
+    light1.position.x = Math.cos(now) * 20;
+    light1.position.z = Math.sin(now) * 20;
+
+    light2.position.y = 10;
+    light2.position.x = Math.sin(now) * 20;
+    light2.position.z = Math.cos(now) * 20;
+
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
