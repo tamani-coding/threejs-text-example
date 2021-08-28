@@ -46,7 +46,7 @@ export function startDingbatsScene() {
             const geometry = new THREE.TextGeometry(character, {
                 font: font,
                 size: 4,
-                height: 1,
+                height: 0.5,
                 curveSegments: 10,
                 bevelEnabled: false,
                 bevelOffset: 0,
