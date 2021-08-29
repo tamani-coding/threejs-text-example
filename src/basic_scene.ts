@@ -38,34 +38,10 @@ export function startBasicScene() {
     scene.background = new THREE.Color(0xffffff);
 
     // FLOOR
-    for (var i = -50; i <= 50; i += 5) {
-        for (var j = -50; j <= 50; j += 5) {
-            const plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 1), new THREE.MeshPhongMaterial({ color: 0x0a7d15 }));
-            plane.position.x = i;
-            plane.position.z = j;
-            plane.rotation.x = - Math.PI / 2
-            plane.receiveShadow = true
-            scene.add(plane);
-        }
-    }
-
-
-    // DIRECTIONAL LIGHT
-    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    // directionalLight.position.x += 20
-    // directionalLight.position.y += 20
-    // directionalLight.position.z += 20
-    // directionalLight.castShadow = true
-    // directionalLight.shadow.mapSize.width = 4096;
-    // directionalLight.shadow.mapSize.height = 4096;
-    // const d = 25;
-    // directionalLight.shadow.camera.left = - d;
-    // directionalLight.shadow.camera.right = d;
-    // directionalLight.shadow.camera.top = d;
-    // directionalLight.shadow.camera.bottom = - d;
-    // scene.add(directionalLight);
-
-    // scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
+    const plane = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.MeshPhongMaterial({ color: 0x0a7d15 }));
+    plane.rotation.x = - Math.PI / 2
+    plane.receiveShadow = true
+    scene.add(plane);
 
     // POINT LIGHT
     const light1 = new THREE.PointLight(0xff6666, 1, 100);
