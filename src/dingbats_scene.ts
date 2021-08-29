@@ -59,7 +59,7 @@ export function startDingbatsScene() {
                 new THREE.MeshPhongMaterial({ color: 0x001a4f }) // side
             ];
             const wrapper = new THREE.Object3D();
-            wrapper.position.z = -80
+            wrapper.position.z = -70
             wrapper.position.x = (count % 20) * 10 - 100
             wrapper.position.y = Math.floor(count / 20) * 10 - 20
             wrapper.rotation.y = Math.random() * Math.PI
