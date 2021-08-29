@@ -3,6 +3,10 @@ threejs-text-example
 
 `npm install` then `npm run start`
 
+![Screenshot](https://github.com/tamani-coding/threejs-text-example/blob/main/screenshot01.png?raw=true)
+![Screenshot](https://github.com/tamani-coding/threejs-text-example/blob/main/screenshot02.png?raw=true)
+![Screenshot](https://github.com/tamani-coding/threejs-text-example/blob/main/screenshot03.png?raw=true)
+
 ## typeface font
 
 Convert a font to typeface.js font.
