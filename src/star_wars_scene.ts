@@ -41,9 +41,9 @@ export function startStarWarsScene() {
     const loader = new THREE.FontLoader();
 
     var starWarsText: THREE.Mesh;
-    loader.load('./fonts/Star_Jedi_Regular.json', function (font) {
+    loader.load('./fonts/Star_Jedi_Regular.json', function (font: THREE.Font) {
 
-        const lorem = 'three.js\n3D Text Example\n{ - } - $ - *\n% - # - 12\n....\n...\n..\n.'
+        const lorem = 'three.js\n3D Text Example\nYou can do cool stuff\nwith three.js fonts\n{ - } - $ - *\n% - # - +\n....\n...\n..\n.'
 
         const geometry = new THREE.TextGeometry(lorem, {
             font: font,
@@ -64,7 +64,7 @@ export function startStarWarsScene() {
         starWarsText.castShadow = true
         starWarsText.position.z = -50
         starWarsText.position.y = -10
-        starWarsText.position.x = -30
+        starWarsText.position.x = -35
         starWarsText.rotation.x = - Math.PI / 4
         scene.add(starWarsText)
     });
