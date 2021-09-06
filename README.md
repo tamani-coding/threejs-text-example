@@ -9,7 +9,7 @@ threejs-text-example
 
 ## typeface font
 
-Convert a font to typeface.js font.
+Convert a font (ttf or otf) to JSON.
 
 http://gero3.github.io/facetype.js/
 
